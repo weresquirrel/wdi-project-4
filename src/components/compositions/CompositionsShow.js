@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
+import { Link } from 'react-router-dom';
+
 class CompositionsShow extends Component {
 
   state = {
@@ -47,6 +49,12 @@ class CompositionsShow extends Component {
           </div>
 
         )} */}
+
+        <button>
+          <Link to={`/compositions/${this.state.composition.id}/edit`} >
+            Edit
+          </Link>
+        </button>
 
         <button onClick={ this.deleteComposition }>
           Delete
