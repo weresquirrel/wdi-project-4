@@ -3,7 +3,6 @@ const router = require('express').Router();
 const compositions = require('../controllers/compositions');
 const auth = require('../controllers/auth');
 
-// routes go here
 router.route('/compositions')
   .get(compositions.index)
   .post(compositions.create);
