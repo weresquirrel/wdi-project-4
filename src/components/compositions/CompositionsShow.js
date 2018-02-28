@@ -10,6 +10,16 @@ class CompositionsShow extends Component {
     }
   }
 
+  deleteComposition = () => {
+    Axios
+      .delete(`/api/compositions/${this.props.match.params.id}`)
+      .then(() => {
+        // it should go rather to the personal index
+        this.props.history.push('/');
+      })
+      .catch(err => console.log(err));
+  }
+
   componentDidMount() {
     Axios
       .get(`/api/compositions/${this.props.match.params.id}`)
@@ -37,6 +47,10 @@ class CompositionsShow extends Component {
           </div>
 
         )} */}
+
+        <button onClick={ this.deleteComposition }>
+          Delete
+        </button>
 
       </div>
     );
