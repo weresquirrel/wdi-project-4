@@ -9,9 +9,19 @@ import CompositionsEdit from './components/compositions/CompositionsEdit';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
+// for the auth trial
+import Auth from './lib/Auth';
+
 import './scss/style.scss';
 
 class App extends Component {
+
+  logout = (e) => {
+    e.preventDefault();
+    Auth.logout();
+    console.log('ciao!');
+    this.props.history.push('/');
+  }
 
   render() {
     return (
@@ -24,7 +34,12 @@ class App extends Component {
                 <li><Link to="/compositions/new">Add New</Link></li>
                 <li><Link to="/compositions">Browse</Link></li>
                 <li><Link to="/register">Register</Link></li>
-                <li><Link to="/login">Login</Link></li>
+                { !Auth.isAuthenticated() &&
+                  <li><Link to="/login">Login</Link></li>
+                }
+                { Auth.isAuthenticated() &&
+                  <li><a href="#" onClick={ this.logout }>Logout</a></li>
+                }
               </ul>
             </nav>
           </header>

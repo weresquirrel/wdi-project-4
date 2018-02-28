@@ -8,6 +8,7 @@ class Auth {
   }
 
   static isAuthenticated() {
+    // console.log('auth - y');
     return !!this.getToken();
   }
 

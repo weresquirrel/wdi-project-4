@@ -25,6 +25,7 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token);
         // new + welcome username!
+        console.log('hi!');
         this.props.history.push('/');
       })
       .catch(err => console.log(err));
