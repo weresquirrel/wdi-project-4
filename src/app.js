@@ -6,9 +6,10 @@ import CompositionsNew from './components/compositions/CompositionsNew';
 import CompositionsIndex from './components/compositions/CompositionsIndex';
 import CompositionsShow from './components/compositions/CompositionsShow';
 import CompositionsEdit from './components/compositions/CompositionsEdit';
+import Navbar from './components/utility/Navbar';
+
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-
 // for the auth trial
 import Auth from './lib/Auth';
 
@@ -33,13 +34,14 @@ class App extends Component {
               <ul>
                 <li><Link to="/compositions/new">Add New</Link></li>
                 <li><Link to="/compositions">Browse</Link></li>
-                <li><Link to="/register">Register</Link></li>
+                {/* <li><Link to="/register">Register</Link></li>
                 { !Auth.isAuthenticated() &&
                   <li><Link to="/login">Login</Link></li>
                 }
                 { Auth.isAuthenticated() &&
                   <li><a href="#" onClick={ this.logout }>Logout</a></li>
-                }
+                } */}
+                <Navbar />
               </ul>
             </nav>
           </header>
