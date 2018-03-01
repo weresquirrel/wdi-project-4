@@ -11,39 +11,18 @@ import Navbar from './components/utility/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 // for the auth trial
-import Auth from './lib/Auth';
+// import Auth from './lib/Auth';
 
 import './scss/style.scss';
 
 class App extends Component {
-
-  logout = (e) => {
-    e.preventDefault();
-    Auth.logout();
-    console.log('ciao!');
-    this.props.history.push('/');
-  }
-
   render() {
     return (
       <Router>
         <div>
           <header>
             <h1><Link to="/">Zen Sounds</Link></h1>
-            <nav>
-              <ul>
-                <li><Link to="/compositions/new">Add New</Link></li>
-                <li><Link to="/compositions">Browse</Link></li>
-                {/* <li><Link to="/register">Register</Link></li>
-                { !Auth.isAuthenticated() &&
-                  <li><Link to="/login">Login</Link></li>
-                }
-                { Auth.isAuthenticated() &&
-                  <li><a href="#" onClick={ this.logout }>Logout</a></li>
-                } */}
-                <Navbar />
-              </ul>
-            </nav>
+            <Navbar />
           </header>
           <main>
             <Switch>
@@ -58,7 +37,6 @@ class App extends Component {
           </main>
         </div>
       </Router>
-
     );
   }
 }

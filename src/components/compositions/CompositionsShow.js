@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 
 import { Link } from 'react-router-dom';
+import Auth from '../../lib/Auth';
 
 class CompositionsShow extends Component {
 
@@ -14,7 +15,7 @@ class CompositionsShow extends Component {
 
   deleteComposition = () => {
     Axios
-      .delete(`/api/compositions/${this.props.match.params.id}`)
+      .delete(`/api/compositions/${this.props.match.params.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` }})
       .then(() => {
         // it should go rather to the personal index
         this.props.history.push('/');
@@ -22,7 +23,7 @@ class CompositionsShow extends Component {
       .catch(err => console.log(err));
   }
 
-  componentDidMount() {
+  componentWillMount() {
     Axios
       .get(`/api/compositions/${this.props.match.params.id}`)
       .then(res => {
@@ -50,15 +51,17 @@ class CompositionsShow extends Component {
 
         )} */}
 
+        { Auth.isAuthenticated() &&
         <button>
           <Link to={`/compositions/${this.state.composition.id}/edit`} >
             Edit
           </Link>
-        </button>
+        </button>}
 
+        { Auth.isAuthenticated() &&
         <button onClick={ this.deleteComposition }>
           Delete
-        </button>
+        </button>}
 
       </div>
     );

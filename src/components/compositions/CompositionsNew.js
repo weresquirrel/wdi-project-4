@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 
 import CompositionsForm from './CompositionsForm';
+import Auth from '../../lib/Auth';
 
 class CompositionsNew extends Component {
   state = {
@@ -22,7 +23,7 @@ class CompositionsNew extends Component {
 
     console.log('submitted');
     Axios
-      .post('/api/compositions', this.state.composition)
+      .post('/api/compositions', this.state.composition, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`} })
       .then(() => {
         // it should go rather to the show || the personal index
         this.props.history.push('/');

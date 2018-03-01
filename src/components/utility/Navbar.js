@@ -12,11 +12,13 @@ const Navbar = ({ history }) => {
 
   return(
     <nav>
-      { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">Login</Link>}
-      {' '}
-      { !Auth.isAuthenticated() && <Link to="/register" className="standard-button">Register</Link> }
-      {' '}
-      { Auth.isAuthenticated() && <a href="#" className="standard-button" onClick={logout}>Logout</a> }
+      <ul>
+        <li><Link to="/compositions">Browse</Link></li>
+        { Auth.isAuthenticated() &&<li><Link to="/compositions/new">Add New</Link></li>}
+        { !Auth.isAuthenticated() && <li><Link to="/login">Login</Link></li>}
+        { !Auth.isAuthenticated() && <li><Link to="/register">Register</Link></li> }
+        { Auth.isAuthenticated() && <li><a href="#" onClick={logout}>Logout</a></li> }
+      </ul>
     </nav>
   );
 };

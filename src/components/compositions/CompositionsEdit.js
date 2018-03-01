@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 
 import CompositionsForm from './CompositionsForm';
+import Auth from '../../lib/Auth';
 
 class CompositionsEdit extends Component {
   state = {
@@ -9,6 +10,14 @@ class CompositionsEdit extends Component {
       title: '',
       sounds: []
     }
+  }
+
+  componentDidMount() {
+    Axios
+      .get(`/api/compositions/${this.props.match.params.id}`)
+      .then(res => this.setState({ composition: res.data }))
+      .catch(err => console.log(err));
+    console.log(this.state);
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -21,17 +30,9 @@ class CompositionsEdit extends Component {
     e.preventDefault();
 
     Axios
-      .put(`/api/compositions/${this.props.match.params.id}`, this.state.composition)
+      .put(`/api/compositions/${this.props.match.params.id}`, this.state.composition, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then(() => this.props.history.push(`/compositions/${this.props.match.params.id}`))
       .catch(err => console.log(err));
-  }
-
-  componentDidMount() {
-    Axios
-      .get(`/api/compositions/${this.props.match.params.id}`)
-      .then(res => this.setState({ composition: res.data }))
-      .catch(err => console.log(err));
-    console.log(this.state);
   }
 
   render() {
