@@ -7,6 +7,7 @@ import CompositionsIndex from './components/compositions/CompositionsIndex';
 import CompositionsShow from './components/compositions/CompositionsShow';
 import CompositionsEdit from './components/compositions/CompositionsEdit';
 import Navbar from './components/utility/Navbar';
+import UsersCompositionsIndex from './components/users/UsersCompositionsIndex';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -28,6 +29,7 @@ class App extends Component {
             <Switch>
               <Route path="/login" component={ Login } />
               <Route path="/register" component={ Register } />
+              <Route path="/users/:userId/compositions" component={ UsersCompositionsIndex } />
               <Route path="/compositions/new" component={ CompositionsNew } />
               <Route path="/compositions/:id/edit" component={ CompositionsEdit } />
               <Route path="/compositions/:id" component={ CompositionsShow } />

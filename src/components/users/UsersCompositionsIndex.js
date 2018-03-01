@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import Auth from '../../lib/Auth';
 
 import { Link } from 'react-router-dom';
 
-class CompositionsIndex extends Component {
+class UsersCompositionsIndex extends Component {
   state = {
     compositions: []
   }
 
   componentDidMount() {
     Axios
-      .get('/api/compositions')
+      .get(`/api/users/${this.props.match.params.userId}/compositions`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`} })
       .then(res => {
         this.setState({ compositions: res.data });
         console.log(res.data);
@@ -22,12 +23,12 @@ class CompositionsIndex extends Component {
     return(
       <div>
 
-        <h2>Public compositions</h2>
+        <h2>My compositions</h2>
 
         {this.state.compositions.map(composition =>
           <div key={composition.id}>
             <Link to={`/compositions/${composition.id}`}>
-              <p>{composition.title}</p>
+              <p>{ composition.title }</p>
             </Link>
           </div>
         )}
@@ -35,6 +36,7 @@ class CompositionsIndex extends Component {
       </div>
     );
   }
+
 }
 
-export default CompositionsIndex;
+export default UsersCompositionsIndex;
