@@ -8,7 +8,8 @@ class CompositionsEdit extends Component {
   state = {
     composition: {
       title: '',
-      sounds: []
+      sounds: [],
+      createdBy: ''
     }
   }
 

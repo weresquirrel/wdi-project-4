@@ -9,7 +9,8 @@ class CompositionsShow extends Component {
   state = {
     composition: {
       title: '',
-      sounds: []
+      sounds: [],
+      createdBy: {}
     }
   }
 
@@ -39,6 +40,7 @@ class CompositionsShow extends Component {
 
         <div>
           <p>{ this.state.composition.title }</p>
+          <p>{ this.state.composition.createdBy.username }</p>
         </div>
 
         {/* {this.state.composition.sounds.map(sound =>

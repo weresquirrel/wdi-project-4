@@ -10,7 +10,7 @@ function compositionsIndex(req, res, next) {
 
 function compositionsCreate(req, res, next) {
   composition
-    .create(req.body)
+    .create({...req.body, createdBy: req.currentUser.id})
     .then(composition => res.status(201).json(composition))
     .catch(next);
 }
@@ -18,6 +18,7 @@ function compositionsCreate(req, res, next) {
 function compositionsShow(req, res, next) {
   composition
     .findById(req.params.id)
+    .populate('createdBy')
     .exec()
     .then((composition) => {
       if(!composition) return res.notFound();
