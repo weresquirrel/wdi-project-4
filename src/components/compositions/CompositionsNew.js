@@ -9,7 +9,8 @@ class CompositionsNew extends Component {
     composition: {
       title: '',
       sounds: []
-    }
+    },
+    sounds: []
   }
 
   // OLD VERSION
@@ -19,25 +20,29 @@ class CompositionsNew extends Component {
   //   console.log(composition);
   // }
 
-  handleChange = ({target: {name, value, checked}}) => {
-    let composition = {};
+  componentDidMount() {
+    Axios
+      .get('/api/sounds')
+      .then(res => this.setState({ sounds: res.data }))
+      .catch(err => console.log(err));
+  }
 
-    if (name === 'sounds') {
-      const oldSounds = this.state.composition.sounds;
-      let newSounds = [];
+  handleChange = ({target: { value, name }}) => {
+    let composition = null;
 
-      if (checked) {
-        newSounds = [...oldSounds, value];
+    if(name === 'sounds') {
+      const index     = this.state.composition.sounds.indexOf(value);
+
+      if(index < 0) {
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat(value)});
       } else {
-        newSounds = oldSounds.filter((sound) => sound !== value);
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound !== value)});
       }
-
-      composition = Object.assign({}, this.state.composition, {'sounds': newSounds});
     } else {
-      composition = Object.assign({}, this.state.composition, {[name]: value});
+      composition = Object.assign({}, this.state.composition, { [name]: value });
     }
-    console.log(composition);
-    this.setState({composition});
+
+    this.setState({ composition });
   }
 
   handleSubmit = (e) => {
@@ -55,11 +60,11 @@ class CompositionsNew extends Component {
 
   render() {
     return(
-
       <CompositionsForm
-        handleChange = { this.handleChange }
-        handleSubmit = { this.handleSubmit }
-        composition = { this.state.composition }
+        handleChange={ this.handleChange }
+        handleSubmit={ this.handleSubmit }
+        composition={ this.state.composition }
+        sounds={this.state.sounds}
       />
 
     );

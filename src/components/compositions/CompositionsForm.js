@@ -1,13 +1,21 @@
 import React from 'react';
-import SoundsIndex from '../sounds/SoundsIndex';
-
-const CompositionsForm = ({ handleChange, handleSubmit, composition }) => {
+const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) => {
   return(
     <form onSubmit={ handleSubmit }>
-
-      <SoundsIndex handleChange = { handleChange }/>
       <hr/>
-      
+
+      { sounds.map(sound =>
+        <div key={sound.id} className="form-group">
+          <label>{ sound.name }</label>
+          <input
+            type="checkbox"
+            name="sounds"
+            value={sound.id}
+            onChange={handleChange}
+          />
+        </div>
+      )}
+
       <div className="form-group">
         <label htmlFor="title">Give a title to your composition!</label>
         <input
