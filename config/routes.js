@@ -3,6 +3,7 @@ const secureRoute = require('../lib/secureRoute');
 const compositions = require('../controllers/compositions');
 const auth = require('../controllers/auth');
 const users = require('../controllers/users');
+const sounds = require('../controllers/sounds');
 
 router.route('/compositions')
   .get(compositions.index)
@@ -15,6 +16,9 @@ router.route('/compositions/:id')
 
 router.route('/users/:userId/compositions')
   .get(secureRoute, users.compositionsIndex);
+
+router.route('/sounds')
+  .get(sounds.soundsIndex);
 
 router.route('/register')
   .post(auth.register);
