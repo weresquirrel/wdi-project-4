@@ -12,10 +12,32 @@ class CompositionsNew extends Component {
     }
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    const composition = Object.assign({}, this.state.composition, { [name]: value });
-    this.setState({ composition });
+  // OLD VERSION
+  // handleChange = ({ target: { name, value } }) => {
+  //   const composition = Object.assign({}, this.state.composition, { [name]: value });
+  //   this.setState({ composition });
+  //   console.log(composition);
+  // }
+
+  handleChange = ({target: {name, value, checked}}) => {
+    let composition = {};
+
+    if (name === 'sounds') {
+      const oldSounds = this.state.composition.sounds;
+      let newSounds = [];
+
+      if (checked) {
+        newSounds = [...oldSounds, value];
+      } else {
+        newSounds = oldSounds.filter((sound) => sound !== value);
+      }
+
+      composition = Object.assign({}, this.state.composition, {'sounds': newSounds});
+    } else {
+      composition = Object.assign({}, this.state.composition, {[name]: value});
+    }
     console.log(composition);
+    this.setState({composition});
   }
 
   handleSubmit = (e) => {

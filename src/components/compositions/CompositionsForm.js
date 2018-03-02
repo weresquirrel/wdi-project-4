@@ -1,8 +1,13 @@
 import React from 'react';
+import SoundsIndex from '../sounds/SoundsIndex';
 
 const CompositionsForm = ({ handleChange, handleSubmit, composition }) => {
   return(
     <form onSubmit={ handleSubmit }>
+
+      <SoundsIndex handleChange = { handleChange }/>
+      <hr/>
+      
       <div className="form-group">
         <label htmlFor="title">Give a title to your composition!</label>
         <input
