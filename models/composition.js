@@ -4,7 +4,6 @@ const compositionSchema = mongoose.Schema({
   title: { type: String, required: true },
   sounds: [],
   stars: { type: Number },
-  // createdBy: { type: String }
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 

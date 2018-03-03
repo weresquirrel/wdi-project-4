@@ -29,27 +29,32 @@ class CompositionsEdit extends Component {
       .catch(err => console.log(err));
   }
 
-  // handleChange = ({ target: { name, value } }) => {
-  //   const composition = Object.assign({}, this.state.composition, { [name]: value });
-  //   this.setState({ composition });
-  //   console.log(composition);
-  // }
-
   handleChange = ({target: { value, name }}) => {
     let composition = null;
 
     if(name === 'sounds') {
-      const index     = this.state.composition.sounds.indexOf(value);
+      const index = this.state.composition.sounds.findIndex(sound => sound.id === value);
 
       if(index < 0) {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat(value)});
+        composition = Object.assign({}, this.state.composition,
+          { sounds: this.state.composition.sounds.concat({id: value, volume: 100})});
       } else {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound !== value)});
+        composition = Object.assign({}, this.state.composition,
+          { sounds: this.state.composition.sounds.filter(sound => sound.id !== value)});
       }
+    } else if ( name.startsWith('volume-') ) {
+      const soundId = name.substring(7);
+
+      composition = Object.assign({}, this.state.composition,
+        { sounds: this.state.composition.sounds
+          .filter(sound => sound.id !== soundId)
+          .concat({ id: soundId, volume: parseInt(value) })
+        });
+
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }
-
+    console.log(composition);
     this.setState({ composition });
   }
 
