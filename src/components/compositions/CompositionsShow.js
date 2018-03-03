@@ -11,7 +11,8 @@ class CompositionsShow extends Component {
       title: '',
       sounds: [],
       createdBy: {}
-    }
+    },
+    sounds: []
   }
 
   deleteComposition = () => {
@@ -25,13 +26,21 @@ class CompositionsShow extends Component {
   }
 
   componentWillMount() {
+
     Axios
-      .get(`/api/compositions/${this.props.match.params.id}`)
+      .get('/api/sounds')
       .then(res => {
-        this.setState({composition: res.data});
-        console.log(this.state.composition);
+        this.setState({ sounds: res.data });
+        Axios
+          .get(`/api/compositions/${this.props.match.params.id}`)
+          .then(res => {
+            this.setState({composition: res.data});
+            console.log(this.state.composition);
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
+
   }
 
   render() {
@@ -43,15 +52,16 @@ class CompositionsShow extends Component {
           <p>{ this.state.composition.createdBy.username }</p>
         </div>
 
-        {/* {this.state.composition.sounds.map(sound =>
+        {this.state.composition.sounds.map(chosenSound => {
+          const sound = this.state.sounds.find(s => s.id === chosenSound.id);
+          return(
+            <div key={chosenSound.id}>
 
-          <div key={sound}>
-            <div className="sound" id={sound}></div>
-            <div className="stem"></div>
-            <div className="leaf"></div>
-          </div>
+              <p>{ sound.name }: { chosenSound.volume }%</p>
 
-        )} */}
+            </div>
+          );
+        })}
 
         { Auth.isAuthenticated() &&
         <button>
