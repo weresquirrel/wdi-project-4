@@ -10,7 +10,8 @@ class CompositionsEdit extends Component {
       title: '',
       sounds: [],
       createdBy: {}
-    }
+    },
+    sounds: []
   }
 
   componentDidMount() {
@@ -21,12 +22,35 @@ class CompositionsEdit extends Component {
         console.log(this.state);
       })
       .catch(err => console.log(err));
+
+    Axios
+      .get('/api/sounds')
+      .then(res => this.setState({ sounds: res.data }))
+      .catch(err => console.log(err));
   }
 
-  handleChange = ({ target: { name, value } }) => {
-    const composition = Object.assign({}, this.state.composition, { [name]: value });
+  // handleChange = ({ target: { name, value } }) => {
+  //   const composition = Object.assign({}, this.state.composition, { [name]: value });
+  //   this.setState({ composition });
+  //   console.log(composition);
+  // }
+
+  handleChange = ({target: { value, name }}) => {
+    let composition = null;
+
+    if(name === 'sounds') {
+      const index     = this.state.composition.sounds.indexOf(value);
+
+      if(index < 0) {
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat(value)});
+      } else {
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound !== value)});
+      }
+    } else {
+      composition = Object.assign({}, this.state.composition, { [name]: value });
+    }
+
     this.setState({ composition });
-    console.log(composition);
   }
 
   handleSubmit = (e) => {
@@ -49,6 +73,7 @@ class CompositionsEdit extends Component {
         handleChange = { this.handleChange }
         handleSubmit = { this.handleSubmit }
         composition = { this.state.composition }
+        sounds={this.state.sounds}
       />
     );
   }

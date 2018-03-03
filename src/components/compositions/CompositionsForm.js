@@ -4,15 +4,26 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
     <form onSubmit={ handleSubmit }>
       <hr/>
 
+
       { sounds.map(sound =>
         <div key={sound.id} className="form-group">
           <label>{ sound.name }</label>
           <input
             type="checkbox"
             name="sounds"
-            value={sound.id}
-            onChange={handleChange}
+            value={ sound.id }
+            onChange={ handleChange }
+            checked={ composition.sounds.findIndex(s => s.id === sound.id) >= 0 }
           />
+          { (composition.sounds.findIndex(s => s.id === sound.id) >= 0) &&
+            <input
+              type="range"
+              min="1"
+              max="100"
+              name={`volume-${sound.id}`}
+              value={composition.sounds[composition.sounds.findIndex(s => s.id === sound.id)].volume}
+            />
+          }
         </div>
       )}
 

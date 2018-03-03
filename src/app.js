@@ -24,6 +24,7 @@ class App extends Component {
           <header>
             <h1><Link to="/">Zen Sounds</Link></h1>
             <Navbar />
+            
           </header>
           <main>
             <Switch>

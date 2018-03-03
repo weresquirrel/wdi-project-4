@@ -25,7 +25,7 @@ mongoose.connect(db[env])
     }]
   ))
   .then((sounds) => {
-    // console.log(sounds);
+    console.log(sounds);
     console.log(`${sounds.length} sounds created`);
 
     return User.create(

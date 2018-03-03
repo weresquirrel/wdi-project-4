@@ -31,17 +31,17 @@ class CompositionsNew extends Component {
     let composition = null;
 
     if(name === 'sounds') {
-      const index     = this.state.composition.sounds.indexOf(value);
+      const index = this.state.composition.sounds.findIndex(sound => sound.id === value);
 
       if(index < 0) {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat(value)});
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat({id: value, volume: 100})});
       } else {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound !== value)});
+        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound.id !== value)});
       }
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }
-
+    console.log(composition);
     this.setState({ composition });
   }
 
