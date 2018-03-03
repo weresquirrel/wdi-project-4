@@ -4,6 +4,67 @@ import Axios from 'axios';
 import CompositionsForm from './CompositionsForm';
 import Auth from '../../lib/Auth';
 
+class SoundGraph {
+  audioctx = null
+  controls = {}
+
+  loadSounds(sounds) {
+    this.audioctx = new (window.AudioContext || window.webkitAudioContext)();
+    sounds.forEach(sound => {
+      this.controls[sound.id] = this.loadSound(sound.src);
+    });
+  }
+
+  loadSound(src) {
+    const soundSrc = this.audioctx.createBufferSource();
+    const req = new XMLHttpRequest();
+
+    req.open('GET', src, true);
+    req.responseType = 'arraybuffer';
+
+    const gainNode = this.audioctx.createGain();
+
+    req.onload = () => {
+      const data = req.response;
+
+      this.audioctx.decodeAudioData(data, (buffer) => {
+        soundSrc.buffer = buffer;
+        soundSrc.connect(gainNode);
+        gainNode.connect(this.audioctx.destination);
+        soundSrc.loop = true;
+        gainNode.gain.setValueAtTime(0, 0);
+        soundSrc.start(0);
+      },
+      (e) => {
+        console.log('error: '+ e.err);
+      }
+      );
+    };
+    req.send();
+    return {gain: gainNode, source: soundSrc};
+  }
+
+  stop() {
+    if (this.audioctx) {
+      this.audioctx.close();
+      this.audioctx = null;
+      this.controls = {};
+    }
+  }
+
+  mix(sounds) {
+    Object.keys(this.controls).forEach( soundId => {
+      const sound = sounds.find(s => s.id === soundId);
+      if (sound) {
+        this.controls[soundId].gain.gain.setValueAtTime(sound.volume/100.0, 0);
+      } else {
+        this.controls[soundId].gain.gain.setValueAtTime(0, 0);
+      }
+    });  
+  }
+
+}
+
 class CompositionsNew extends Component {
   state = {
     composition: {
@@ -15,11 +76,20 @@ class CompositionsNew extends Component {
     sounds: []
   }
 
+  soundGraph = new SoundGraph
+
   componentDidMount() {
     Axios
       .get('/api/sounds')
-      .then(res => this.setState({ sounds: res.data }))
+      .then(res => {
+        this.setState({ sounds: res.data });
+        this.soundGraph.loadSounds(res.data);
+      })
       .catch(err => console.log(err));
+  }
+
+  componentWillUnmount() {
+    this.soundGraph.stop();
   }
 
   handleChange = ({target: { value, name, checked }}) => {
@@ -63,6 +133,10 @@ class CompositionsNew extends Component {
         this.props.history.push('/');
       })
       .catch(err => console.log(err));
+  }
+
+  componentDidUpdate() {
+    this.soundGraph.mix(this.state.composition.sounds);
   }
 
   render() {

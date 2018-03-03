@@ -18,12 +18,16 @@ mongoose.connect(db[env])
   .then(() => Sound.create(
     [{
       name: 'Ocean\'s waves',
-      src: 'link-to-oceans-waves',
+      src: '/static/sounds/ocean.ogg',
       icon: 'ocean-icon'
     }, {
       name: 'Birds singing',
-      src: 'link-to-birds-singing',
+      src: '/static/sounds/robin.ogg',
       icon: 'birds-icon'
+    }, {
+      name: 'Bar noise',
+      src: '/static/sounds/bar.ogg',
+      icon: 'bar-icon'
     }]
   ))
   .then((dbSounds) => {

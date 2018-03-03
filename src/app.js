@@ -11,8 +11,6 @@ import UsersCompositionsIndex from './components/users/UsersCompositionsIndex';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-// for the auth trial
-// import Auth from './lib/Auth';
 
 import './scss/style.scss';
 
@@ -24,7 +22,7 @@ class App extends Component {
           <header>
             <h1><Link to="/">Zen Sounds</Link></h1>
             <Navbar />
-            
+
           </header>
           <main>
             <Switch>
