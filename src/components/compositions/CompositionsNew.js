@@ -8,6 +8,7 @@ class CompositionsNew extends Component {
   state = {
     composition: {
       title: '',
+      // sounds: [{id: 'id01', volume: 86},{..}]
       sounds: []
     },
     sounds: []
@@ -34,10 +35,21 @@ class CompositionsNew extends Component {
       const index = this.state.composition.sounds.findIndex(sound => sound.id === value);
 
       if(index < 0) {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.concat({id: value, volume: 100})});
+        composition = Object.assign({}, this.state.composition,
+          { sounds: this.state.composition.sounds.concat({id: value, volume: 100})});
       } else {
-        composition = Object.assign({}, this.state.composition, { sounds: this.state.composition.sounds.filter(sound => sound.id !== value)});
+        composition = Object.assign({}, this.state.composition,
+          { sounds: this.state.composition.sounds.filter(sound => sound.id !== value)});
       }
+    } else if ( name.startsWith('volume-') ) {
+      const soundId = name.substring(7);
+
+      composition = Object.assign({}, this.state.composition,
+        { sounds: this.state.composition.sounds
+          .filter(sound => sound.id !== soundId)
+          .concat({ id: soundId, volume: parseInt(value) })
+        });
+
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }

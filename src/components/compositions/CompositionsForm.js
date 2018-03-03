@@ -22,6 +22,7 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
               max="100"
               name={`volume-${sound.id}`}
               value={composition.sounds[composition.sounds.findIndex(s => s.id === sound.id)].volume}
+              onChange={ handleChange }
             />
           }
         </div>
