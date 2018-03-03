@@ -9,17 +9,11 @@ class CompositionsNew extends Component {
     composition: {
       title: '',
       // sounds: [{id: 'id01', volume: 86},{..}]
-      sounds: []
+      sounds: [],
+      private: false
     },
     sounds: []
   }
-
-  // OLD VERSION
-  // handleChange = ({ target: { name, value } }) => {
-  //   const composition = Object.assign({}, this.state.composition, { [name]: value });
-  //   this.setState({ composition });
-  //   console.log(composition);
-  // }
 
   componentDidMount() {
     Axios
@@ -28,7 +22,7 @@ class CompositionsNew extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = ({target: { value, name }}) => {
+  handleChange = ({target: { value, name, checked }}) => {
     let composition = null;
 
     if(name === 'sounds') {
@@ -49,7 +43,8 @@ class CompositionsNew extends Component {
           .filter(sound => sound.id !== soundId)
           .concat({ id: soundId, volume: parseInt(value) })
         });
-
+    } else if(name === 'private') {
+      composition = Object.assign({}, this.state.composition, { [name]: checked });
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }

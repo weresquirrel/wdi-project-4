@@ -7,6 +7,8 @@ const Composition = require('../models/composition');
 const User = require('../models/user');
 const Sound = require('../models/sound');
 
+let sounds = [];
+
 mongoose.connect(db[env])
   .then(() => {
     Sound.collection.drop();
@@ -24,7 +26,8 @@ mongoose.connect(db[env])
       icon: 'birds-icon'
     }]
   ))
-  .then((sounds) => {
+  .then((dbSounds) => {
+    sounds = dbSounds;
     console.log(sounds);
     console.log(`${sounds.length} sounds created`);
 
@@ -49,12 +52,24 @@ mongoose.connect(db[env])
     return Composition.create(
       [{
         title: 'Zen Garden',
-        sounds: [],
+        sounds: [
+          {
+            id: sounds[1].id,
+            volume: 42
+          },
+          {
+            id: sounds[0].id,
+            volume: 18
+          }],
         createdBy: users[0].id
       },{
         title: 'Focus background',
-        sounds: [],
-        createdBy: users[1].id
+        sounds: [{
+          id: sounds[0].id,
+          volume: 72
+        }],
+        createdBy: users[1].id,
+        private: true
       }]
     );
   })

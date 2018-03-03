@@ -9,7 +9,8 @@ class CompositionsEdit extends Component {
     composition: {
       title: '',
       sounds: [],
-      createdBy: {}
+      createdBy: {},
+      private: false
     },
     sounds: []
   }
@@ -29,7 +30,7 @@ class CompositionsEdit extends Component {
       .catch(err => console.log(err));
   }
 
-  handleChange = ({target: { value, name }}) => {
+  handleChange = ({target: { value, name, checked }}) => {
     let composition = null;
 
     if(name === 'sounds') {
@@ -50,7 +51,8 @@ class CompositionsEdit extends Component {
           .filter(sound => sound.id !== soundId)
           .concat({ id: soundId, volume: parseInt(value) })
         });
-
+    } else if(name === 'private') {
+      composition = Object.assign({}, this.state.composition, { [name]: checked });
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }

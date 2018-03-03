@@ -2,7 +2,7 @@ const composition = require('../models/composition');
 
 function compositionsIndex(req, res, next) {
   composition
-    .find()
+    .find({ private: false })
     .exec()
     .then(compositions => res.json(compositions))
     .catch(next);

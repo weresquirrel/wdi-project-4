@@ -4,7 +4,8 @@ const compositionSchema = mongoose.Schema({
   title: { type: String, required: true },
   sounds: [],
   stars: { type: Number },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  private: { type: Boolean, default: false }
 });
 
 compositionSchema.methods.belongsTo = function belongsTo(user) {
