@@ -3,6 +3,7 @@ import Axios from 'axios';
 
 import CompositionsForm from './CompositionsForm';
 import Auth from '../../lib/Auth';
+import SoundGraph from '../../lib/SoundGraph';
 
 class CompositionsEdit extends Component {
   state = {
@@ -15,19 +16,28 @@ class CompositionsEdit extends Component {
     sounds: []
   }
 
+  soundGraph = new SoundGraph
+
   componentDidMount() {
-    Axios
-      .get(`/api/compositions/${this.props.match.params.id}`)
-      .then(res => {
-        this.setState({ composition: res.data });
-        console.log(this.state);
-      })
-      .catch(err => console.log(err));
 
     Axios
       .get('/api/sounds')
-      .then(res => this.setState({ sounds: res.data }))
+      .then(res => {
+        this.setState({ sounds: res.data });
+        this.soundGraph.loadSounds(res.data);
+        Axios
+          .get(`/api/compositions/${this.props.match.params.id}`)
+          .then(res => {
+            this.setState({ composition: res.data });
+            console.log(this.state);
+          })
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
+  }
+
+  componentWillUnmount() {
+    this.soundGraph.stop();
   }
 
   handleChange = ({target: { value, name, checked }}) => {
@@ -72,6 +82,10 @@ class CompositionsEdit extends Component {
       .put(`/api/compositions/${this.props.match.params.id}`, updated, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` } })
       .then(() => this.props.history.push(`/compositions/${this.props.match.params.id}`))
       .catch(err => console.log(err));
+  }
+
+  componentDidUpdate() {
+    this.soundGraph.mix(this.state.composition.sounds);
   }
 
   render() {
