@@ -68,9 +68,9 @@ class CompositionsNew extends Component {
     console.log('submitted');
     Axios
       .post('/api/compositions', this.state.composition, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`} })
-      .then(() => {
-        // it should go rather to the show || the personal index
-        this.props.history.push('/');
+      .then((response) => {
+        // console.log(response);
+        this.props.history.push(`/compositions/${response.data.id}`);
       })
       .catch(err => console.log(err));
   }

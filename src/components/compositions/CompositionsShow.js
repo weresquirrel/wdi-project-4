@@ -22,8 +22,7 @@ class CompositionsShow extends Component {
     Axios
       .delete(`/api/compositions/${this.props.match.params.id}`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}` }})
       .then(() => {
-        // it should go rather to the personal index
-        this.props.history.push('/');
+        this.props.history.push(`/users/${Auth.getPayload().userId}/compositions`);
       })
       .catch(err => console.log(err));
   }
