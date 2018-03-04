@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(customResponses);
 
 app.use('/api', routes);
+// to make the sounds available on Heroku
 app.use('/static', express.static(`${__dirname}/static`));
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 

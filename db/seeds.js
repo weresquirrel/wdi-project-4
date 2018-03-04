@@ -28,6 +28,94 @@ mongoose.connect(db[env])
       name: 'Bar noise',
       src: '/static/sounds/bar.ogg',
       icon: 'bar-icon'
+    }, {
+      name: 'Bees',
+      src: '/static/sounds/bees.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Fan',
+      src: '/static/sounds/bigFactoryFan.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Crickets',
+      src: '/static/sounds/cricket.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Electronic',
+      src: '/static/sounds/electronic.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Fire',
+      src: '/static/sounds/fire.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Mechanic',
+      src: '/static/sounds/freezerDrone.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Frogs',
+      src: '/static/sounds/frogs.ogg',
+      icon: '-icon'
+    }, {
+      name: 'Guitar',
+      src: '/static/sounds/guitar.ogg',
+      icon: '-icon'
+    },{
+      name: 'Heavy Rain',
+      src: '/static/sounds/heavyRain.ogg',
+      icon: '-icon'
+    },{
+      name: 'Keyboard',
+      src: '/static/sounds/keyboard.ogg',
+      icon: '-icon'
+    },{
+      name: 'Noisy Train',
+      src: '/static/sounds/noisyTrain.ogg',
+      icon: '-icon'
+    },{
+      name: 'Owls',
+      src: '/static/sounds/owls.ogg',
+      icon: '-icon'
+    },{
+      name: 'Passing Train',
+      src: '/static/sounds/passingTrain.ogg',
+      icon: '-icon'
+    },{
+      name: 'Cat',
+      src: '/static/sounds/purr.ogg',
+      icon: '-icon'
+    },{
+      name: 'Rain Drops',
+      src: '/static/sounds/rainDrops.ogg',
+      icon: '-icon'
+    },{
+      name: 'Restaurant',
+      src: '/static/sounds/restaurant.ogg',
+      icon: '-icon'
+    },{
+      name: 'Seagulls',
+      src: '/static/sounds/seagulls.ogg',
+      icon: '-icon'
+    },{
+      name: 'Street',
+      src: '/static/sounds/street.ogg',
+      icon: '-icon'
+    },{
+      name: 'Traffic',
+      src: '/static/sounds/traffic.ogg',
+      icon: '-icon'
+    },{
+      name: 'Washingmachine',
+      src: '/static/sounds/washingmachine.ogg',
+      icon: '-icon'
+    },{
+      name: 'Wind',
+      src: '/static/sounds/wind.ogg',
+      icon: '-icon'
+    },{
+      name: 'Wind Chimes',
+      src: '/static/sounds/windChimes.ogg',
+      icon: '-icon'
     }]
   ))
   .then((dbSounds) => {
