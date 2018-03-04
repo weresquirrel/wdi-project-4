@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(customResponses);
 
 app.use('/api', routes);
+app.use('/static', express.static(`${__dirname}/static`));
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use(errorHandler);
