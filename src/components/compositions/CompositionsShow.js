@@ -3,6 +3,7 @@ import Axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import Auth from '../../lib/Auth';
+import SoundGraph from '../../lib/SoundGraph';
 
 class CompositionsShow extends Component {
 
@@ -14,6 +15,8 @@ class CompositionsShow extends Component {
     },
     sounds: []
   }
+
+  soundGraph = new SoundGraph
 
   deleteComposition = () => {
     Axios
@@ -31,6 +34,7 @@ class CompositionsShow extends Component {
       .get('/api/sounds')
       .then(res => {
         this.setState({ sounds: res.data });
+        this.soundGraph.loadSounds(res.data);
         Axios
           .get(`/api/compositions/${this.props.match.params.id}`)
           .then(res => {
@@ -41,6 +45,14 @@ class CompositionsShow extends Component {
       })
       .catch(err => console.log(err));
 
+  }
+
+  componentWillUnmount() {
+    this.soundGraph.stop();
+  }
+
+  componentDidUpdate() {
+    this.soundGraph.mix(this.state.composition.sounds);
   }
 
   render() {
