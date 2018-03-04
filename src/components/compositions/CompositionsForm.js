@@ -1,34 +1,16 @@
 import React from 'react';
+import SoundsMixer from '../sounds/SoundsMixer';
+
 const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) => {
   return(
     <form onSubmit={ handleSubmit }>
 
-      { sounds.map(sound =>
-        <div key={sound.id} className="form-group">
-          <label htmlFor={`sound-${sound.id}`}>{ sound.name }</label>
-          <input
-            type="checkbox"
-            name="sounds"
-            id={`sound-${sound.id}`}
-            value={ sound.id }
-            onChange={ handleChange }
-            checked={ composition.sounds.findIndex(s => s.id === sound.id) >= 0 }
-          />
-          { (composition.sounds.findIndex(s => s.id === sound.id) >= 0) &&
-            <input
-              type="range"
-              min="1"
-              max="100"
-              name={`volume-${sound.id}`}
-              value={composition.sounds[composition.sounds.findIndex(s => s.id === sound.id)].volume}
-              onChange={ handleChange }
-            />
-          }
-        </div>
-      )}
-
+      <SoundsMixer
+        handleChange={ handleChange }
+        composition={ composition }
+        sounds={ sounds }
+      />
       <hr/>
-
       <div className="form-group">
         <label htmlFor="title">Give a title to your composition!</label>
         <input
@@ -48,7 +30,6 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
           name="private"
           onChange={ handleChange }
           checked={ composition.private }
-          
         />
       </div>
 

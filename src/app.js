@@ -6,6 +6,7 @@ import CompositionsNew from './components/compositions/CompositionsNew';
 import CompositionsIndex from './components/compositions/CompositionsIndex';
 import CompositionsShow from './components/compositions/CompositionsShow';
 import CompositionsEdit from './components/compositions/CompositionsEdit';
+import CompositionsDemo from './components/compositions/CompositionsDemo';
 import Navbar from './components/utility/Navbar';
 import UsersCompositionsIndex from './components/users/UsersCompositionsIndex';
 
@@ -33,7 +34,7 @@ class App extends Component {
               <Route path="/compositions/:id/edit" component={ CompositionsEdit } />
               <Route path="/compositions/:id" component={ CompositionsShow } />
               <Route path="/compositions" component={ CompositionsIndex } />
-              {/* <Route exact path="/" component={ Demo } /> */}
+              <Route exact path="/" component={ CompositionsDemo } />
             </Switch>
           </main>
         </div>
