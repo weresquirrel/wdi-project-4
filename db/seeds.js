@@ -19,103 +19,103 @@ mongoose.connect(db[env])
     [{
       name: 'Ocean\'s waves',
       src: '/static/sounds/ocean.ogg',
-      icon: 'ocean-icon'
+      icon: '/static/icons/040-sea-waves.svg'
     }, {
       name: 'Birds singing',
       src: '/static/sounds/robin.ogg',
-      icon: 'birds-icon'
+      icon: '/static/icons/014-animal.svg'
     }, {
       name: 'Bar noise',
       src: '/static/sounds/bar.ogg',
-      icon: 'bar-icon'
+      icon: '/static/icons/007-coffee.svg'
     }, {
       name: 'Bees',
       src: '/static/sounds/bees.ogg',
-      icon: '-icon'
+      icon: '/static/icons/016-bee.svg'
     }, {
       name: 'Fan',
       src: '/static/sounds/bigFactoryFan.ogg',
-      icon: '-icon'
+      icon: '/static/icons/023-fan.svg'
     }, {
       name: 'Crickets',
       src: '/static/sounds/cricket.ogg',
-      icon: '-icon'
+      icon: '/static/icons/033-cricket.svg'
     }, {
       name: 'Electronic',
       src: '/static/sounds/electronic.ogg',
-      icon: '-icon'
+      icon: '/static/icons/022-electric-tower.svg'
     }, {
       name: 'Fire',
       src: '/static/sounds/fire.ogg',
-      icon: '-icon'
+      icon: '/static/icons/041-campfire.svg'
     }, {
-      name: 'Mechanic',
+      name: 'Mechanical',
       src: '/static/sounds/freezerDrone.ogg',
-      icon: '-icon'
+      icon: '/static/icons/037-levels.svg'
     }, {
       name: 'Frogs',
       src: '/static/sounds/frogs.ogg',
-      icon: '-icon'
+      icon: '/static/icons/032-toad.svg'
     }, {
       name: 'Guitar',
       src: '/static/sounds/guitar.ogg',
-      icon: '-icon'
+      icon: '/static/icons/004-guitar.svg'
     },{
       name: 'Heavy Rain',
       src: '/static/sounds/heavyRain.ogg',
-      icon: '-icon'
+      icon: '/static/icons/029-rain.svg'
     },{
       name: 'Keyboard',
       src: '/static/sounds/keyboard.ogg',
-      icon: '-icon'
+      icon: '/static/icons/002-keyboard-1.svg'
     },{
       name: 'Noisy Train',
       src: '/static/sounds/noisyTrain.ogg',
-      icon: '-icon'
+      icon: '/static/icons/009-train-2.svg'
     },{
       name: 'Owls',
       src: '/static/sounds/owls.ogg',
-      icon: '-icon'
+      icon: '/static/icons/034-owl.svg'
     },{
       name: 'Passing Train',
       src: '/static/sounds/passingTrain.ogg',
-      icon: '-icon'
+      icon: '/static/icons/010-tube-rails.svg'
     },{
       name: 'Cat',
       src: '/static/sounds/purr.ogg',
-      icon: '-icon'
+      icon: '/static/icons/035-egyptian-cat.svg'
     },{
       name: 'Rain Drops',
       src: '/static/sounds/rainDrops.ogg',
-      icon: '-icon'
+      icon: '/static/icons/028-drop.svg'
     },{
       name: 'Restaurant',
       src: '/static/sounds/restaurant.ogg',
-      icon: '-icon'
+      icon: '/static/icons/008-restaurant.svg'
     },{
       name: 'Seagulls',
       src: '/static/sounds/seagulls.ogg',
-      icon: '-icon'
+      icon: '/static/icons/036-sun-sea-and-seagulls.svg'
     },{
       name: 'Street',
       src: '/static/sounds/street.ogg',
-      icon: '-icon'
+      icon: '/static/icons/018-city.svg'
     },{
       name: 'Traffic',
       src: '/static/sounds/traffic.ogg',
-      icon: '-icon'
+      icon: '/static/icons/024-traffic-light.svg'
     },{
       name: 'Washingmachine',
       src: '/static/sounds/washingmachine.ogg',
-      icon: '-icon'
+      icon: '/static/icons/020-washing-machine.svg'
     },{
       name: 'Wind',
       src: '/static/sounds/wind.ogg',
-      icon: '-icon'
+      icon: '/static/icons/012-sky.svg'
     },{
       name: 'Wind Chimes',
       src: '/static/sounds/windChimes.ogg',
-      icon: '-icon'
+      icon: '/static/icons/001-chimes.svg'
     }]
   ))
   .then((dbSounds) => {
