@@ -13,15 +13,16 @@ import UsersCompositionsIndex from './components/users/UsersCompositionsIndex';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
+import 'bootstrap-css-only';
 import './scss/style.scss';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="container">
           <header>
-            <h1><Link to="/">Zen Sounds</Link></h1>
+            <h1><Link to="/">ZeN SoUNdS</Link></h1>
             <Navbar />
 
           </header>

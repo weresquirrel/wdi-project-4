@@ -1,4 +1,58 @@
-img {
-  width: 60px;
-  height: auto;
+@import url('https://fonts.googleapis.com/css?family=Megrim');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&amp;subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Nova+Slim');
+@import url('https://fonts.googleapis.com/css?family=Overlock:400,400i,700,700i,900,900i&subset=latin-ext');
+
+body {
+  // background: #c8e4ca;
+  background: linear-gradient(to bottom, #FAFFD1, #A1FFCE);
+  color: #009688;
+  // font-family: 'Megrim', cursive;
+
+  // font-family: 'Poiret One', cursive;
+  // letter-spacing: 1px;
+  // font-size: 16pt;
+
+  // font-family: 'Nova Slim', cursive;
+  font-family: 'Overlock', cursive;
+  font-size: 14pt;
+  font-weight: 400;
+
+}
+
+h1, button {
+  font-family: 'Megrim', cursive;
+  letter-spacing: 0;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: #009688;
+}
+
+header {
+  text-align: center;
+  & nav{
+    & ul {
+      list-style-type: none;
+      padding-left: 0;
+      & li {
+        display: inline-block;
+        padding: 12px;
+      }
+    }
+  }
+}
+
+.sound-wrapper {
+  text-align: center;
+  height: 116px;
+  opacity: 0.75;
+  & img {
+    width: 60px;
+    height: auto;
+  }
+  & .slider {
+    // border: 1px solid red;
+  }
 }
