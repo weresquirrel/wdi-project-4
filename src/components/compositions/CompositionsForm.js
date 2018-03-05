@@ -20,6 +20,7 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
           placeholder="For focused work"
           value={ composition.title }
           onChange={ handleChange }
+          className="form-control"
         />
       </div>
 

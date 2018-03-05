@@ -1,15 +1,14 @@
 import React from 'react';
 
 const SoundsMixer = ({ handleChange, composition, sounds }) => {
+  const soundsArray = composition.sounds.map(sound => sound.id);
   return(
-    <div className="row">
+    <div className="row sounds-mixer">
       {sounds.map(sound =>
-        <div key={sound.id} className="form-group col-md-3 col-sm-4 col-xs-6 sound-wrapper">
+        <div key={sound.id} className="form-group col-md-3 col-sm-4 col-6 sound-wrapper">
 
-          <label htmlFor={`sound-${sound.id}`}>
-            <img src={sound.icon} />
+          <label htmlFor={`sound-${sound.id}`} style={soundsArray.includes(sound.id) ? {backgroundImage: `url(${sound.icon})`} : {backgroundImage: `url(${sound.icon})`, opacity: '0.7'}}>
             <br/>
-            { sound.name }
           </label>
           <input
             type="checkbox"
@@ -18,6 +17,7 @@ const SoundsMixer = ({ handleChange, composition, sounds }) => {
             value={ sound.id }
             onChange={ handleChange }
             checked={ composition.sounds.findIndex(s => s.id === sound.id) >= 0 }
+            hidden
           />
           <br/>
           { (composition.sounds.findIndex(s => s.id === sound.id) >= 0) &&

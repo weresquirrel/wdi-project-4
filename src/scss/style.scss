@@ -28,6 +28,10 @@ h1, button, h3 {
   letter-spacing: 0;
 }
 
+h1 {
+  padding-top: 10px;
+}
+
 h2 {
   text-align: center;
   color: #b5ddc7;
@@ -65,13 +69,17 @@ header {
   }
 }
 
+.sounds-mixer {
+  padding-top: 38px;
+}
+
 .sound-wrapper {
   text-align: center;
   height: 116px;
   opacity: 0.75;
-  & img {
+  label {
     width: 60px;
-    height: auto;
+    height: 60px;
   }
   & .slider {
     // border: 1px solid red;
