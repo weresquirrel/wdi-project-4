@@ -21,17 +21,23 @@ class UsersCompositionsIndex extends Component {
 
   render() {
     return(
-      <div>
+      <div >
 
         <h2>My compositions</h2>
 
-        {this.state.compositions.map(composition =>
-          <div key={composition.id}>
-            <Link to={`/compositions/${composition.id}`}>
-              <p>{ composition.title }</p>
-            </Link>
-          </div>
-        )}
+        <div className="row">
+          {this.state.compositions.map(composition =>
+            <div key={composition.id} className="col-md-4 col-sm-6">
+              <div className="index-composition-wrapper">
+                <Link to={`/compositions/${composition.id}`}>
+                  <h3>{ composition.title }</h3>
+
+                  { (3+2 < 7) && <p>p</p>}
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
 
       </div>
     );

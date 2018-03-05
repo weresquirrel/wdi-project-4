@@ -3,6 +3,7 @@ const composition = require('../models/composition');
 function compositionsIndex(req, res, next) {
   composition
     .find({ private: false })
+    .populate('createdBy')
     .exec()
     .then(compositions => res.json(compositions))
     .catch(next);

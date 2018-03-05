@@ -60,14 +60,14 @@ class CompositionsShow extends Component {
 
         <div>
           <p>{ this.state.composition.title }</p>
-          <p>{ this.state.composition.createdBy.username }</p>
+          <p>by: { this.state.composition.createdBy.username }</p>
         </div>
 
         {this.state.composition.sounds.map(chosenSound => {
           const sound = this.state.sounds.find(s => s.id === chosenSound.id);
           return(
             <div key={chosenSound.id}>
-
+              {/* <img src={ sound.icon } />  */}
               <p>{ sound.name }: { chosenSound.volume }%</p>
 
             </div>
@@ -75,13 +75,20 @@ class CompositionsShow extends Component {
         })}
 
         { Auth.isAuthenticated() &&
+          this.state.composition.createdBy.id === Auth.getPayload().userId &&
         <button>
           <Link to={`/compositions/${this.state.composition.id}/edit`} >
             Edit
           </Link>
         </button>}
 
+        {/* {
+          console.log('by: ' + this.state.composition.createdBy.id),
+          console.log('pl: ' + Auth.getPayload().userId)
+        } */}
+
         { Auth.isAuthenticated() &&
+          this.state.composition.createdBy.id === Auth.getPayload().userId &&
         <button onClick={ this.deleteComposition }>
           Delete
         </button>}
