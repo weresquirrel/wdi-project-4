@@ -28,6 +28,12 @@ h1, button, h3 {
   letter-spacing: 0;
 }
 
+h2 {
+  text-align: center;
+  color: #b5ddc7;
+  margin-bottom: 16px;
+}
+
 a, a:hover {
   text-decoration: none;
   color: #009688;
@@ -48,11 +54,12 @@ header {
 }
 
 .index-composition-wrapper {
-  border: 1px solid #bee6c2;
+  border: 1px solid #b5ddc7;
   border-radius: 24px 10px 24px 10px;
   text-align: center;
-  padding: 16px 10px 20px 10px;
+  padding: 16px 10px 16px 10px;
   margin-bottom: 12px;
+  height: 102px;
   & p {
     margin-bottom: 0;
   }

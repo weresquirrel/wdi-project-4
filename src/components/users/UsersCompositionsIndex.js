@@ -32,7 +32,7 @@ class UsersCompositionsIndex extends Component {
                 <Link to={`/compositions/${composition.id}`}>
                   <h3>{ composition.title }</h3>
 
-                  { (3+2 < 7) && <p>p</p>}
+                  { composition.private && <p>p</p>}
                 </Link>
               </div>
             </div>

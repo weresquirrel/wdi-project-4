@@ -20,18 +20,22 @@ class CompositionsIndex extends Component {
 
   render() {
     return(
-      <div className="row">
+      <div>
 
-        {this.state.compositions.map(composition =>
-          <div key={ composition.id } className="col-md-4 col-sm-6">
-            <div className="index-composition-wrapper">
-              <Link to={`/compositions/${ composition.id }`}>
-                <h3>{ composition.title }</h3>
-                <p>by: { composition.createdBy.username }</p>
-              </Link>
+        <h2>Listen what the others did</h2>
+
+        <div className="row">
+          {this.state.compositions.map(composition =>
+            <div key={ composition.id } className="col-md-4 col-sm-6">
+              <div className="index-composition-wrapper">
+                <Link to={`/compositions/${ composition.id }`}>
+                  <h3>{ composition.title }</h3>
+                  <p>by: { composition.createdBy.username }</p>
+                </Link>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
       </div>
     );
