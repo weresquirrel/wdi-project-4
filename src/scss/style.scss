@@ -26,7 +26,7 @@ body {
 
 h1, button, h3 {
   font-family: 'Megrim', cursive;
-  letter-spacing: 0;
+  // letter-spacing: 0;
 }
 
 h1 {
@@ -97,9 +97,19 @@ header {
   text-align: center;
 }
 
-.submit-button{
+.zen-button{
   display: block;
   margin: auto;
   background-color: #009688;
   color: white;
+}
+
+.edit-button {
+  a {
+    color: white;
+  }
+}
+
+.zen-input {
+  border: 1px solid #a3c6c2;
 }

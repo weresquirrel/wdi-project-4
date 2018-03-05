@@ -76,8 +76,8 @@ class CompositionsShow extends Component {
 
         { Auth.isAuthenticated() &&
           this.state.composition.createdBy.id === Auth.getPayload().userId &&
-        <button>
-          <Link to={`/compositions/${this.state.composition.id}/edit`} >
+        <button className="btn zen-button edit-button">
+          <Link to={`/compositions/${this.state.composition.id}/edit`}>
             Edit
           </Link>
         </button>}
@@ -89,7 +89,7 @@ class CompositionsShow extends Component {
 
         { Auth.isAuthenticated() &&
           this.state.composition.createdBy.id === Auth.getPayload().userId &&
-        <button onClick={ this.deleteComposition }>
+        <button onClick={ this.deleteComposition } className="btn zen-button">
           Delete
         </button>}
 

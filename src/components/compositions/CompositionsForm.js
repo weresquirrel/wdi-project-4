@@ -10,7 +10,7 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
         composition={ composition }
         sounds={ sounds }
       />
-      
+
       <div className="form-group title-group">
         <label htmlFor="title">Give a title to your composition!</label>
         <input
@@ -20,7 +20,7 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
           placeholder="For focused work"
           value={ composition.title }
           onChange={ handleChange }
-          className="form-control"
+          className="form-control zen-input"
         />
       </div>
 
@@ -30,12 +30,13 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
           name="private"
           onChange={ handleChange }
           checked={ composition.private }
+          className="zen-input"
         />
         <label htmlFor="private">Private</label>
       </div>
 
       <div>
-        <button className="btn submit-button">Save</button>
+        <button className="btn zen-button">Save</button>
       </div>
     </form>
   );
