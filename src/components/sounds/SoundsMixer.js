@@ -7,7 +7,7 @@ const SoundsMixer = ({ handleChange, composition, sounds }) => {
       {sounds.map(sound =>
         <div key={sound.id} className="form-group col-md-3 col-sm-4 col-6 sound-wrapper">
 
-          <label htmlFor={`sound-${sound.id}`} style={soundsArray.includes(sound.id) ? {backgroundImage: `url(${sound.icon})`} : {backgroundImage: `url(${sound.icon})`, opacity: '0.7'}}>
+          <label htmlFor={`sound-${sound.id}`} style={soundsArray.includes(sound.id) ? {backgroundImage: `url(${sound.icon})`} : {backgroundImage: `url(${sound.icon})`, opacity: '0.6'}}>
             <br/>
           </label>
           <input

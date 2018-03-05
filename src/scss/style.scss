@@ -21,6 +21,7 @@ body {
   font-family: 'Overlock', cursive;
   font-size: 14pt;
   font-weight: 400;
+  padding-bottom: 24px;
 }
 
 h1, button, h3 {
@@ -76,12 +77,29 @@ header {
 .sound-wrapper {
   text-align: center;
   height: 116px;
-  opacity: 0.75;
+  opacity: 0.9;
   label {
-    width: 60px;
+    width: 65px;
     height: 60px;
+    background-position: top center;
+    background-repeat: no-repeat;
   }
   & .slider {
     // border: 1px solid red;
   }
+}
+
+.title-group {
+  text-align: center;
+}
+
+.private-group {
+  text-align: center;
+}
+
+.submit-button{
+  display: block;
+  margin: auto;
+  background-color: #009688;
+  color: white;
 }

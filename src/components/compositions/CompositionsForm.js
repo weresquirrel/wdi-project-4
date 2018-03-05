@@ -10,8 +10,8 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
         composition={ composition }
         sounds={ sounds }
       />
-      <hr/>
-      <div className="form-group">
+      
+      <div className="form-group title-group">
         <label htmlFor="title">Give a title to your composition!</label>
         <input
           type="text"
@@ -24,18 +24,18 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
         />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="private">Private</label>
+      <div className="form-group private-group">
         <input
           type="checkbox"
           name="private"
           onChange={ handleChange }
           checked={ composition.private }
         />
+        <label htmlFor="private">Private</label>
       </div>
 
       <div>
-        <button>Save</button>
+        <button className="btn submit-button">Save</button>
       </div>
     </form>
   );
