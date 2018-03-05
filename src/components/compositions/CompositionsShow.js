@@ -58,40 +58,53 @@ class CompositionsShow extends Component {
     return(
       <div>
 
-        <div>
-          <p>{ this.state.composition.title }</p>
+        <div className="show-title">
+          <h3>{ this.state.composition.title }</h3>
           <p>by: { this.state.composition.createdBy.username }</p>
         </div>
 
-        {this.state.composition.sounds.map(chosenSound => {
-          const sound = this.state.sounds.find(s => s.id === chosenSound.id);
-          return(
-            <div key={chosenSound.id}>
-              {/* <img src={ sound.icon } />  */}
-              <p>{ sound.name }: { chosenSound.volume }%</p>
+        <div className="row">
 
-            </div>
-          );
-        })}
+          {this.state.composition.sounds.map(chosenSound => {
+            const sound = this.state.sounds.find(s => s.id === chosenSound.id);
+            return(
+              <div key={chosenSound.id} className="col-md-3 col-sm-4 col-6 show-sound-wrapper">
 
-        { Auth.isAuthenticated() &&
-          this.state.composition.createdBy.id === Auth.getPayload().userId &&
-        <button className="btn zen-button edit-button">
-          <Link to={`/compositions/${this.state.composition.id}/edit`}>
-            Edit
-          </Link>
-        </button>}
+                <div
+                  className="show-sound-icon-holder"
+                  style={{backgroundImage: `url(${sound.icon})`} }>
+                </div>
+                <br/>
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value={ chosenSound.volume }
+                  className="slider"
+                  disabled
+                />
+                <div className="show-data">{ sound.name }: { chosenSound.volume }%</div>
 
-        {/* {
-          console.log('by: ' + this.state.composition.createdBy.id),
-          console.log('pl: ' + Auth.getPayload().userId)
-        } */}
+              </div>
+            );
+          })}
 
-        { Auth.isAuthenticated() &&
-          this.state.composition.createdBy.id === Auth.getPayload().userId &&
-        <button onClick={ this.deleteComposition } className="btn zen-button">
-          Delete
-        </button>}
+        </div>
+        <div className="row show-buttons">
+          { Auth.isAuthenticated() &&
+            this.state.composition.createdBy.id === Auth.getPayload().userId &&
+          <button className="btn zen-button edit-button">
+            <Link to={`/compositions/${this.state.composition.id}/edit`}>
+              Edit
+            </Link>
+          </button>}
+
+          { Auth.isAuthenticated() &&
+            this.state.composition.createdBy.id === Auth.getPayload().userId &&
+          <button onClick={ this.deleteComposition } className="btn zen-button">
+            Delete
+          </button>}
+        </div>
 
       </div>
     );

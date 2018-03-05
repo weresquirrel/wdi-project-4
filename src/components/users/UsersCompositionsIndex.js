@@ -28,11 +28,14 @@ class UsersCompositionsIndex extends Component {
         <div className="row">
           {this.state.compositions.map(composition =>
             <div key={composition.id} className="col-md-4 col-sm-6">
-              <div className="index-composition-wrapper">
+              <div className="user-index-composition-wrapper">
                 <Link to={`/compositions/${composition.id}`}>
-                  <h3>{ composition.title }</h3>
 
-                  { composition.private && <p>p</p>}
+                  { composition.private &&
+                    <img src="../../../static/icons/002-padlock.svg" className="padlock"/>}
+
+                  <h3>{ composition.title }</h3>
+                  <p>{ composition.sounds.length } sounds</p>
                 </Link>
               </div>
             </div>

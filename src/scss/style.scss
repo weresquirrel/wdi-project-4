@@ -64,10 +64,45 @@ header {
   text-align: center;
   padding: 16px 10px 16px 10px;
   margin-bottom: 12px;
-  height: 102px;
-  & p {
+  // height: 102px;
+  p {
     margin-bottom: 0;
   }
+}
+
+.user-index-composition-wrapper {
+  border: 1px solid #b5ddc7;
+  border-radius: 24px 10px 24px 10px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 12px;
+  h3 {
+    padding: 16px 10px 0 10px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.show-title {
+  text-align: center;
+}
+
+.show-sound-wrapper {
+  text-align: center;
+  height: 156px;
+  opacity: 0.9;
+  .slider {
+    opacity: 0.5;
+  }
+}
+
+.show-data {
+  display: block;
+}
+
+.show-buttons {
+  padding-top: 26px;
 }
 
 .sounds-mixer {
@@ -84,9 +119,17 @@ header {
     background-position: top center;
     background-repeat: no-repeat;
   }
-  & .slider {
+  .slider {
     // border: 1px solid red;
   }
+}
+
+.show-sound-icon-holder {
+  width: 65px;
+  height: 60px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: inline-block;
 }
 
 .title-group {
@@ -95,6 +138,15 @@ header {
 
 .private-group {
   text-align: center;
+}
+
+.padlock{
+  width: 25px;
+  height: 25px;
+  opacity: 0.6;
+  padding-top: 5px;
+  // background: yellow;
+  float: right;
 }
 
 .zen-button{

@@ -19,20 +19,23 @@ class SoundGraph {
     const gainNode = this.audioctx.createGain();
     gainNode.gain.setValueAtTime(0, 0);
 
-    req.onload = () => {
-      const data = req.response;
+    soundSrc.connect(gainNode);
+    gainNode.connect(this.audioctx.destination);
 
-      this.audioctx.decodeAudioData(data, (buffer) => {
-        soundSrc.buffer = buffer;
-        soundSrc.connect(gainNode);
-        gainNode.connect(this.audioctx.destination);
-        soundSrc.loop = true;
-        soundSrc.start(0);
-      },
-      (e) => {
-        console.log('error: '+ e.err);
+    req.onload = () => {
+      if (this.audioctx) {
+        const data = req.response;
+
+        this.audioctx.decodeAudioData(data)
+          .then((buffer) => {
+            soundSrc.buffer = buffer;
+            soundSrc.loop = true;
+            soundSrc.start(0);
+          })
+          .catch((/* e */) => {
+            //console.log(`decode error: ${e}`);
+          });
       }
-      );
     };
     req.send();
     return {gain: gainNode, source: soundSrc};
@@ -40,7 +43,10 @@ class SoundGraph {
 
   stop() {
     if (this.audioctx) {
-      this.audioctx.close();
+      this.audioctx
+        .close()
+        .catch();
+      //.catch(e => console.log(`rejected: ${e}`));
       this.audioctx = null;
       this.controls = {};
     }
