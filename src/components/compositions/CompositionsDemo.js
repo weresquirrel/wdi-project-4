@@ -61,11 +61,15 @@ class CompositionsDemo extends Component {
 
   render() {
     return(
-      <SoundsMixer
-        handleChange={ this.handleChange }
-        composition={ this.state.composition }
-        sounds={ this.state.sounds }
-      />
+      <div>
+        <SoundsMixer
+          handleChange={ this.handleChange }
+          composition={ this.state.composition }
+          sounds={ this.state.sounds }
+        />
+        <p className="demo-p">To save your composition, please register</p>
+      </div>
+
     );
   }
 }
