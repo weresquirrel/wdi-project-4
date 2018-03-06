@@ -31,6 +31,7 @@ const CompositionsForm = ({ handleChange, handleSubmit, composition, sounds }) =
           onChange={ handleChange }
           checked={ composition.private }
           className="zen-input"
+          id="private"
         />
         <label htmlFor="private">Private</label>
       </div>

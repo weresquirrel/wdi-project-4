@@ -138,6 +138,50 @@ header {
 
 .private-group {
   text-align: center;
+  input {
+    height: 16px;
+    display: none;
+    &:checked {
+      backgrund-color: red;
+      + label {
+        &:after {
+          content: '✔';
+          font-size: 9px;
+          padding-bottom: 2px;
+          color:white;
+          height: 16px;
+          width: 16px;
+          border: 1px solid #009688;
+          border-radius: .25rem;
+          background: #009688;
+          display: block;
+          position: absolute;
+          left: -20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+  label {
+    margin-left: 5px;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    &:before {
+      content: '';
+      height: 16px;
+      width: 16px;
+      border: 1px solid #a3c6c2;
+      border-radius: .25rem;
+      background: white;
+      display: block;
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }
 
 .padlock{
