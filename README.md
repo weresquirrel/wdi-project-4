@@ -2,7 +2,7 @@
 [![Heroku App Status](https://heroku-shields.herokuapp.com/ancient-beyond-83688)](https://ancient-beyond-83688.herokuapp.com/)
 
 This was my final project at GA. It is a React application where the users can mix together predefined ambient sounds, like bird songs and wind chimes, to create their preferred background noise. These compositions can be saved for later, edited, and optionally made public for other people to browse via a REST API.
- 
+
 ** Screen shot **
 
 ## Prerequisites
@@ -16,26 +16,27 @@ This was my final project at GA. It is a React application where the users can m
 
 Clone this repository:
 
-	git clone https://github.com/weresquirrel/wdi-project-4 <project-dir> 
-cd <project-dir>
+    git clone https://github.com/weresquirrel/wdi-project-4 <project-dir>
+    cd <project-dir>
+
 install dependencies:
 
-	yarn install
+    yarn install
 
 create mongo database schema and populate with sample data:
 
-	yarn run seed
+    yarn run seed
 
 run the application in development mode:
 
     # in separate terminals
-	yarn start:server
-	yarn start:client
-	
+    yarn start:server
+    yarn start:client
+
 or run as standalone application (by default on port 4000):
 
-	yarn start
-	
+    yarn start
+
 ## Technologies used
 - React
 - Web Audio API
