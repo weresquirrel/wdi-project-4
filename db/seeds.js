@@ -47,7 +47,6 @@ mongoose.connect(db[env])
     }, {
       name: 'Fire',
       src: '/static/sounds/fire.ogg',
-      // icon: '/static/icons/041-campfire.svg'
       icon: '/static/icons/001-flames.svg'
     }, {
       name: 'Mechanical',
@@ -96,16 +95,11 @@ mongoose.connect(db[env])
     },{
       name: 'Seagulls',
       src: '/static/sounds/seagulls.ogg',
-      // icon: '/static/icons/036-sun-sea-and-seagulls.svg'
       icon: '/static/icons/003-sunset.svg'
     },{
       name: 'Street',
       src: '/static/sounds/street.ogg',
       icon: '/static/icons/018-city.svg'
-    },{
-      name: 'Traffic',
-      src: '/static/sounds/traffic.ogg',
-      icon: '/static/icons/024-traffic-light.svg'
     },{
       name: 'Washingmachine',
       src: '/static/sounds/washingmachine.ogg',
@@ -200,7 +194,7 @@ mongoose.connect(db[env])
           id: sounds[17].id,
           volume: 78
         },{
-          id: sounds[23].id,
+          id: sounds[22].id,
           volume: 43
         }],
         createdBy: users[3].id
@@ -219,20 +213,20 @@ mongoose.connect(db[env])
           id: sounds[5].id,
           volume: 15
         },{
-          id: sounds[23].id,
+          id: sounds[22].id,
           volume: 14
         }],
         createdBy: users[0].id
       },{
         title: 'Home',
         sounds: [{
-          id: sounds[24].id,
+          id: sounds[23].id,
           volume: 33
         },{
           id: sounds[17].id,
           volume: 77
         },{
-          id: sounds[23].id,
+          id: sounds[22].id,
           volume: 21
         },{
           id: sounds[16].id,
@@ -248,7 +242,7 @@ mongoose.connect(db[env])
           id: sounds[1].id,
           volume: 72
         },{
-          id: sounds[23].id,
+          id: sounds[22].id,
           volume: 43
         }],
         createdBy: users[0].id
@@ -258,7 +252,7 @@ mongoose.connect(db[env])
           id: sounds[7].id,
           volume: 100
         },{
-          id: sounds[24].id,
+          id: sounds[23].id,
           volume: 54
         },{
           id: sounds[17].id,
@@ -267,7 +261,7 @@ mongoose.connect(db[env])
           id: sounds[11].id,
           volume: 46
         },{
-          id: sounds[23].id,
+          id: sounds[22].id,
           volume: 53
         },{
           id: sounds[0].id,
@@ -297,7 +291,7 @@ mongoose.connect(db[env])
       },{
         title: 'machines + rain',
         sounds: [{
-          id: sounds[22].id,
+          id: sounds[21].id,
           volume: 24
         },{
           id: sounds[8].id,
@@ -327,9 +321,6 @@ mongoose.connect(db[env])
         },{
           id: sounds[8].id,
           volume: 30
-        },{
-          id: sounds[21].id,
-          volume: 87
         }],
         createdBy: users[1].id
       },{
@@ -355,7 +346,7 @@ mongoose.connect(db[env])
       },{
         title: 'Buzz',
         sounds: [{
-          id: sounds[22].id,
+          id: sounds[21].id,
           volume: 18
         },{
           id: sounds[4].id,
