@@ -47,7 +47,8 @@ mongoose.connect(db[env])
     }, {
       name: 'Fire',
       src: '/static/sounds/fire.ogg',
-      icon: '/static/icons/041-campfire.svg'
+      // icon: '/static/icons/041-campfire.svg'
+      icon: '/static/icons/001-flames.svg'
     }, {
       name: 'Mechanical',
       src: '/static/sounds/freezerDrone.ogg',
@@ -95,7 +96,8 @@ mongoose.connect(db[env])
     },{
       name: 'Seagulls',
       src: '/static/sounds/seagulls.ogg',
-      icon: '/static/icons/036-sun-sea-and-seagulls.svg'
+      // icon: '/static/icons/036-sun-sea-and-seagulls.svg'
+      icon: '/static/icons/003-sunset.svg'
     },{
       name: 'Street',
       src: '/static/sounds/street.ogg',
@@ -120,7 +122,7 @@ mongoose.connect(db[env])
   ))
   .then((dbSounds) => {
     sounds = dbSounds;
-    console.log(sounds);
+    // console.log(sounds);
     console.log(`${sounds.length} sounds created`);
 
     return User.create(
@@ -148,7 +150,7 @@ mongoose.connect(db[env])
     );
   })
   .then((users) => {
-    console.log(users);
+    // console.log(users);
     console.log(`${users.length} users created`);
 
     return Composition.create(
