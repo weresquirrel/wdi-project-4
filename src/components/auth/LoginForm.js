@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoginForm = ({ handleChange, handleSubmit, user }) => {
   return (
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={ handleSubmit } className="login-form">
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input

@@ -2,9 +2,7 @@ import React from 'react';
 
 const RegisterForm = ({ handleChange, handleSubmit, user }) => {
   return (
-    // Labels or not labels? I prefer to have them as a user,
-    // but there's no label-less site in my portfolio so far...
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={ handleSubmit } className="register-form">
       <div className="form-group">
         <label htmlFor="username">Username</label>
         <input
