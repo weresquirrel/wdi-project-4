@@ -14,7 +14,7 @@ class UsersCompositionsIndex extends Component {
       .get(`/api/users/${this.props.match.params.userId}/compositions`, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`} })
       .then(res => {
         this.setState({ compositions: res.data });
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(err => console.log(err));
   }

@@ -13,7 +13,7 @@ class CompositionsIndex extends Component {
       .get('/api/compositions')
       .then(res => {
         this.setState({ compositions: res.data });
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch(err => console.log(err));
   }

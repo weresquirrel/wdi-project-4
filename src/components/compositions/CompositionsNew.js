@@ -9,7 +9,6 @@ class CompositionsNew extends Component {
   state = {
     composition: {
       title: '',
-      // sounds: [{id: 'id01', volume: 86},{..}]
       sounds: [],
       private: false
     },
@@ -58,14 +57,13 @@ class CompositionsNew extends Component {
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }
-    console.log(composition);
+    // console.log(composition);
     this.setState({ composition });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('submitted');
     Axios
       .post('/api/compositions', this.state.composition, { headers: { 'Authorization': `Bearer ${Auth.getToken()}`} })
       .then((response) => {

@@ -27,7 +27,7 @@ class Register extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token);
         // login
-        this.props.history.push('/');
+        this.props.history.push('/login');
       })
       .catch(err => console.log(err));
   }

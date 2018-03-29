@@ -55,7 +55,7 @@ class CompositionsDemo extends Component {
         });
 
     }
-    console.log(composition);
+    // console.log(composition);
     this.setState({ composition });
   }
 

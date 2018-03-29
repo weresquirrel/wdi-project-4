@@ -38,7 +38,7 @@ class CompositionsShow extends Component {
           .get(`/api/compositions/${this.props.match.params.id}`)
           .then(res => {
             this.setState({composition: res.data});
-            console.log(this.state.composition);
+            // console.log(this.state.composition);
           })
           .catch(err => console.log(err));
       })

@@ -29,7 +29,7 @@ class CompositionsEdit extends Component {
           .get(`/api/compositions/${this.props.match.params.id}`)
           .then(res => {
             this.setState({ composition: res.data });
-            console.log(this.state);
+            // console.log(this.state);
           })
           .catch(err => console.log(err));
       })
@@ -66,7 +66,7 @@ class CompositionsEdit extends Component {
     } else {
       composition = Object.assign({}, this.state.composition, { [name]: value });
     }
-    console.log(composition);
+    // console.log(composition);
     this.setState({ composition });
   }
 
