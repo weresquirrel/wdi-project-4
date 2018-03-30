@@ -3,7 +3,7 @@
 
 This was my final project at GA. It is a React application where the users can mix together predefined ambient sounds, like bird songs and wind chimes, to create their preferred background noise. These compositions can be saved for later, edited, and optionally made public for other people to browse via a REST API.
 
-** Screen shot **
+![screenshot](static/screenshots/zenSoundsScreenshot.png)
 
 ## Prerequisites
 
