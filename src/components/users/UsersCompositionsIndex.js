@@ -32,7 +32,7 @@ class UsersCompositionsIndex extends Component {
                 <Link to={`/compositions/${composition.id}`}>
 
                   { composition.private &&
-                    <img src="../../../static/icons/002-padlock.svg" className="padlock"/>}
+                    <img src="../../../static/icons/002-padlock.svg" className="padlock-index"/>}
 
                   <h3>{ composition.title }</h3>
                   <p>{ composition.sounds.length } sounds</p>

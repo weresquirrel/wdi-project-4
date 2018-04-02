@@ -11,7 +11,8 @@ class CompositionsShow extends Component {
     composition: {
       title: '',
       sounds: [],
-      createdBy: {}
+      createdBy: {},
+      private: false
     },
     sounds: []
   }
@@ -59,7 +60,11 @@ class CompositionsShow extends Component {
       <div>
 
         <div className="show-title">
-          <h3>{ this.state.composition.title }</h3>
+
+
+
+          <h3>{ this.state.composition.title }{ this.state.composition.private &&
+            <img src="../../../static/icons/002-padlock.svg" className="padlock-show"/>}</h3>
           <p>by: { this.state.composition.createdBy.username }</p>
         </div>
 
